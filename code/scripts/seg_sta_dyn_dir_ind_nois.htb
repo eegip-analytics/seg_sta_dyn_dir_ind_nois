@@ -79,11 +79,15 @@ outfname='derivatives/seg_sta_dyn_dir_ind_nois/[/,1,batch_dfn,_,-2]_desc-SEGstad
 if ~exist(outpath,'dir');
     mkdir(outpath);
 end
-EEG = pop_epoch( tmpEEG, { 'sta1' }, ...
+try
+    EEG = pop_epoch( tmpEEG, { 'sta1' }, ...
                  [-.2 .8], 'newname', 'direct', 'epochinfo', 'yes');
-EEG = pop_rmbase( EEG, [-200    0]);
-EEG.condition = 'static_face_dir';
-EEG = pop_saveset( EEG, 'filename',outfname);
+    EEG = pop_rmbase( EEG, [-200    0]);
+    EEG.condition = 'static_face_dir';
+    EEG = pop_saveset( EEG, 'filename',outfname);
+catch
+    disp(['problem with ', outfname]);
+end
 
 % static face indirect gaze
 outfname='derivatives/seg_sta_dyn_dir_ind_nois/[/,1,batch_dfn,_,-2]_desc-SEGstaind_eeg.set'
@@ -91,11 +95,15 @@ outfname='derivatives/seg_sta_dyn_dir_ind_nois/[/,1,batch_dfn,_,-2]_desc-SEGstai
 if ~exist(outpath,'dir');
     mkdir(outpath);
 end
-EEG = pop_epoch( tmpEEG, { 'sta2','sta3' }, ...
+try
+    EEG = pop_epoch( tmpEEG, { 'sta2','sta3' }, ...
                  [-.2 .8], 'newname', 'indirect', 'epochinfo', 'yes');
-EEG = pop_rmbase( EEG, [-200    0]);
-EEG.condition = 'static_face_ind';
-EEG = pop_saveset( EEG, 'filename',outfname);
+    EEG = pop_rmbase( EEG, [-200    0]);
+    EEG.condition = 'static_face_ind';
+    EEG = pop_saveset( EEG, 'filename',outfname);
+catch
+    disp(['problem with ', outfname]);
+end
 
 % dynamic face direct gaze
 outfname='derivatives/seg_sta_dyn_dir_ind_nois/[/,1,batch_dfn,_,-2]_desc-SEGdyndir_eeg.set'
@@ -103,11 +111,15 @@ outfname='derivatives/seg_sta_dyn_dir_ind_nois/[/,1,batch_dfn,_,-2]_desc-SEGdynd
 if ~exist(outpath,'dir');
     mkdir(outpath);
 end
-EEG = pop_epoch( tmpEEG, { 'dyn1' }, ...
+try
+    EEG = pop_epoch( tmpEEG, { 'dyn1' }, ...
                  [-.2 .8], 'newname', 'direct', 'epochinfo', 'yes');
-EEG = pop_rmbase( EEG, [-200    0]);
-EEG.condition = 'dynamic_face_dir';
-EEG = pop_saveset( EEG, 'filename',outfname);
+    EEG = pop_rmbase( EEG, [-200    0]);
+    EEG.condition = 'dynamic_face_dir';
+    EEG = pop_saveset( EEG, 'filename',outfname);
+catch
+    disp(['problem with ', outfname]);
+end
 
 % dynamic face indirect gaze
 outfname='derivatives/seg_sta_dyn_dir_ind_nois/[/,1,batch_dfn,_,-2]_desc-SEGdynind_eeg.set'
@@ -115,11 +127,15 @@ outfname='derivatives/seg_sta_dyn_dir_ind_nois/[/,1,batch_dfn,_,-2]_desc-SEGdyni
 if ~exist(outpath,'dir');
     mkdir(outpath);
 end
-EEG = pop_epoch( tmpEEG, { 'dyn2','dyn3' }, ...
+try
+    EEG = pop_epoch( tmpEEG, { 'dyn2','dyn3' }, ...
                  [-.2 .8], 'newname', 'indirect', 'epochinfo', 'yes');
-EEG = pop_rmbase( EEG, [-200    0]);
-EEG.condition = 'dynamic_face_ind';
-EEG = pop_saveset( EEG, 'filename',outfname);
+    EEG = pop_rmbase( EEG, [-200    0]);
+    EEG.condition = 'dynamic_face_ind';
+    EEG = pop_saveset( EEG, 'filename',outfname);
+catch
+    disp(['problem with ', outfname]);
+end
 
 
 
@@ -129,10 +145,14 @@ outfname='derivatives/seg_sta_dyn_dir_ind_nois/[/,1,batch_dfn,_,-2]_desc-SEGnois
 if ~exist(outpath,'dir');
     mkdir(outpath);
 end
-EEG = pop_epoch( tmpEEG, { 'Nois' }, ...
+try
+    EEG = pop_epoch( tmpEEG, { 'Nois' }, ...
                  [-.2 .8], 'newname', 'noise', 'epochinfo', 'yes');
-EEG = pop_rmbase( EEG, [-200    0]);
-EEG.condition = 'noise';
-EEG = pop_saveset( EEG, 'filename',outfname);
+    EEG = pop_rmbase( EEG, [-200    0]);
+    EEG.condition = 'noise';
+    EEG = pop_saveset( EEG, 'filename',outfname);
+catch
+    disp(['problem with ', outfname]);
+end
 
 
